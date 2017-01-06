@@ -16,30 +16,21 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-          <h1>Timestamp Microservice</h1>
+          <h1>Image Search Abstraction Layer</h1>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p class="introBlurb">This timestamp microservice takes a URL with a date parameter and returns a JSON string with the unix
-                and natural date formats. To use this microservice, enter a URL that contains a date parameter into your 
-                browser URL bar and hit enter.
+              <p class="introBlurb">This Image Search Abstraction Layer application will take a search parameter at the /search endpoint in the URL and will return
+                search results based on that parameter. You can also provide an offset on the end of your search to paginate the results.</p>
+              <p class="introBlurb">If you navigate to the /latest endpoint, the application will return the most recent searches performed on the /search endpoint.</p>
               </p>
-              <p class="userStories">User stories:</p>
-              <ol class="list">
-                <li>I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)</li>
-                <li>If it does, it returns both the Unix timestamp and the natural language form of that date.</li>
-                <li>If it does not contain a date or Unix timestamp, it returns null for those properties.</li>
-              </ol>
             </div>
           </div>
           <p>Enter a URL like one of these into your browser URL bar:</p>
           <div class="alert alert-danger">
-            https://matty22timestampmicroservice.herokuapp.com/December%2015,%202015
-          </div>
-          <div class="alert alert-danger">
-            https://matty22timestampmicroservice.herokuapp.com/1450137600
+            https://matty22imagesearchlayer.herokuapp.com/api/search/MEAN%20stack?offset=10
           </div>
           <p>Example output:</p>
-          <div class="alert alert-success">{"readable":"December 15, 2015","unixtime":"1450166400"}</div>
+          <div class="alert alert-success">{ An object full of MEAN stack images }</div>
         </div>
         <div class="col-md-2"></div>
       </div>
