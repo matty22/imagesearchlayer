@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Search Layer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <h1>Timestamp Microservice</h1>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p class="introBlurb">This timestamp microservice takes a URL with a date parameter and returns a JSON string with the unix
+                and natural date formats. To use this microservice, enter a URL that contains a date parameter into your 
+                browser URL bar and hit enter.
+              </p>
+              <p class="userStories">User stories:</p>
+              <ol class="list">
+                <li>I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)</li>
+                <li>If it does, it returns both the Unix timestamp and the natural language form of that date.</li>
+                <li>If it does not contain a date or Unix timestamp, it returns null for those properties.</li>
+              </ol>
+            </div>
+          </div>
+          <p>Enter a URL like one of these into your browser URL bar:</p>
+          <div class="alert alert-danger">
+            https://matty22timestampmicroservice.herokuapp.com/December%2015,%202015
+          </div>
+          <div class="alert alert-danger">
+            https://matty22timestampmicroservice.herokuapp.com/1450137600
+          </div>
+          <p>Example output:</p>
+          <div class="alert alert-success">{"readable":"December 15, 2015","unixtime":"1450166400"}</div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </body>
