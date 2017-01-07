@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var url = require('url');
 var logger = require('morgan');
 
 var index = require('./routes/index');
@@ -16,7 +17,8 @@ app.use('/', index);
 
 app.get('/search/:searchQuery', function(request, response) {
   //var searchQuery = request.params.searchQuery;
-  var query = require('url').parse(request.url,true).query;
+  var url_parts = url.parse(request.url,true);
+  var query = url_parts.query;
   response.send("The search query is " + query);
 });
 
