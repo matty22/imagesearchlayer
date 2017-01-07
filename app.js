@@ -15,8 +15,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 app.get('/search/:searchQuery', function(request, response) {
-  var searchQuery = request.params.searchQuery;
-  response.send("The search query is " + searchQuery);
+  //var searchQuery = request.params.searchQuery;
+  var query = require('url').parse(request.url,true).query;
+  response.send("The search query is " + query);
 });
 
 // catch 404 and forward to error handler
