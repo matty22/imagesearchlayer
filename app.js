@@ -16,10 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 app.get('/search/:searchQuery', function(request, response) {
-  //var searchQuery = request.params.searchQuery;
-  var url_parts = url.parse(request.url,true);
-  var query = url_parts.query;
-  response.send("The search query is " + query);
+  var searchQuery = request.params.searchQuery;
+  var offset = request.query.offset;
+  response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
 // catch 404 and forward to error handler
