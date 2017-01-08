@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var url = require('url');
+var fetch = require('request');
 var logger = require('morgan');
 
 var index = require('./routes/index');
@@ -18,7 +18,11 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(request, response) {
   var searchQuery = request.params.searchQuery;
   var offset = request.query.offset;
-  response.send("The search topic is " + searchQuery + " And the offset is " + offset);
+  //Add the Google image API url here
+  fetch.get({ url: ''}, function(err, res, body) {
+    //Fill out this function stub
+  })
+  //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
 // catch 404 and forward to error handler
