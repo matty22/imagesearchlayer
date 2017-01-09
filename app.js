@@ -1,6 +1,7 @@
 var express = require('express');
+var router = express.Router();
 var path = require('path');
-var fetch = require('request');
+var request = require('request');
 var logger = require('morgan');
 
 var index = require('./routes/index');
@@ -15,13 +16,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
-app.get('/search/:searchQuery', function(request, response) {
-  var searchQuery = request.params.searchQuery;
-  var offset = request.query.offset;
-  //Add the Google image API url here
-  fetch.get({ url: ''}, function(err, res, body) {
-    //Fill out this function stub
-  })
+app.get('/search/:searchQuery', function(req, response) {
+  var searchQuery = req.params.searchQuery;
+  var offset = req.query.offset;
+  //Add the Bing image API url here
+  router.get('/', function(req, res, next) {
+    request({
+      uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+      qs: {
+        api_key: '75cf99bff6b4406951be6a28a28c4c8',
+        query: searchQuery
+      }
+    }).pipe(res);
+  });
   //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
