@@ -26,15 +26,8 @@ app.get('/search/:searchQuery', function(req, response) {
       qs: {
         api_key: '75cf99bff6b4406951be6a28a28c4c8',
         query: searchQuery
-      }, function (err, res, body) {
-        if (!err && response.statusCode === 200) {
-          console.log(body);
-          res.json(body);
-        } else {
-          res.json(error);
-        }
       }
-    })
+    }).pipe(res);
   });
   //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
