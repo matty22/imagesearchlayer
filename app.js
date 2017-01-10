@@ -28,8 +28,8 @@ app.get('/search/:searchQuery', function(req, res) {
   request({
     uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=' + searchQuery + '&offset=' + searchOffset,
     headers: {"Ocp-Apim-Subscription-Key": key}
-  }).on('response', function(response) {
-    console.log(response.value);
+  }).on('response', function(res) {
+    console.log(res.value);
   }).pipe(res);
 });
 
