@@ -31,8 +31,8 @@ app.get('/search/:searchQuery', function(req, res) {
     headers: { "Ocp-Apim-Subscription-Key": key }
   }, function(error, response, body) {
       var resultsArray = JSON.parse(body);
-      console.log(resultsArray.value);
-      res.send(body);
+      //console.log(resultsArray.value);
+      res.send(resultsArray.value);
       });
   
 });
