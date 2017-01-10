@@ -22,15 +22,15 @@ app.get('/search/:searchQuery', function(req, response) {
   var offset = req.query.offset;
   console.log(typeof key);
   //Add the Bing image API url here
-  router.get('/', function(req, res, next) {
-    request({
-      uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
-      qs: {
-        api_key: API_KEY.toString(),
-        query: searchQuery
-      }
-    }).pipe(res);
-  });
+  // router.get('/', function(req, res, next) {
+  //   request({
+  //     uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+  //     qs: {
+  //       api_key: key,
+  //       query: searchQuery
+  //     }
+  //   }).pipe(res);
+  // });
   //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
