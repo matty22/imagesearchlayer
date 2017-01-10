@@ -22,7 +22,7 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var searchOffset = req.query.offset;
-  var searchTime = Date.now();
+  var searchTIme = new Date();
   // Prevent searchOffset from being undefined
   if (searchOffset === undefined) {
     searchOffset = 0;
