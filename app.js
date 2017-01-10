@@ -33,7 +33,7 @@ app.get('/search/:searchQuery', function(req, res) {
     if (error) {
       throw error;
     } else {
-      res.send(body);
+      console.log(body);
     }
   });
 
