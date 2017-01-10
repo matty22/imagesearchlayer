@@ -31,11 +31,15 @@ app.get('/search/:searchQuery', function(req, res) {
     headers: { "Ocp-Apim-Subscription-Key": key }
   }, function(error, response, body) {
       var resultsArray = JSON.parse(body);
-      // var returnArray = [];
-      // for (var i = 0; i < 10; i++) {
-      //   returnArray.push({"imageUrl": resultsArray[0]});
-      // }
-      console.log(resultsArray.value);
+      var returnArray = [];
+      for (var i = 0; i < 10; i++) {
+        returnArray.push({
+          "imageUrl": resultsArray[i].contentUrl,
+          "name": resultsArray[i].name,
+          "pageUrl": resultsArray[i].hostPageUrl
+        });
+      }
+      console.log(returnArray);
       res.send(resultsArray);
       });
   
