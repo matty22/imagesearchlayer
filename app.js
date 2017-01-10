@@ -19,14 +19,18 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var searchOffset = req.query.offset;
-  //var key = process.env.API_KEY;
+  // Prevent searchOffset from being undefined
+  if (searchOffset === undefined) {
+    searchOffset = 0;
+  }
 
-  //Add the Bing image API url here
+  // Call Bing Image Search API
   request({
     uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=' + searchQuery + '&offset=' + searchOffset,
     headers: {"Ocp-Apim-Subscription-Key": key}
+  }).on('response', function(response) {
+    console.log("This works");
   }).pipe(res);
-  //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
 // catch 404 and forward to error handler
