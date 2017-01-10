@@ -17,10 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
-app.get('/search/:searchQuery', function(req, response) {
+app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var offset = req.query.offset;
-  console.log(typeof key);
+  res.send(key);
   //Add the Bing image API url here
   // router.get('/', function(req, res, next) {
   //   request({
