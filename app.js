@@ -30,12 +30,9 @@ app.get('/search/:searchQuery', function(req, res) {
     method: "GET",
     headers: { "Ocp-Apim-Subscription-Key": key }
   }, function(error, response, body) {
-    if (error) {
-      throw error;
-    } else {
       console.log(body);
-    }
-  });
+      });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
