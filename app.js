@@ -1,19 +1,22 @@
+
+// Module requires
 var express = require('express');
 var path = require('path');
 var request = require('request');
 var logger = require('morgan');
+
+// API key and globals
 var key = process.env.API_KEY;
+var recentSearchArray = [];
 
+// Express variable instantiation
 var index = require('./routes/index');
-
 var app = express();
 
-// view engine setup
+// Generic Express setup stuff
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 
 app.get('/search/:searchQuery', function(req, res) {
@@ -24,8 +27,7 @@ app.get('/search/:searchQuery', function(req, res) {
     searchOffset = 0;
   }
 
-  // Create an array of recent searches
-  var recentSearchArray = [];
+  // Add recent searches to recentSearchArray
   if (recentSearchArray.length < 10) {
     recentSearchArray.push(searchQuery);
   } else {
