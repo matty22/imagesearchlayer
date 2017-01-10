@@ -20,7 +20,7 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var offset = req.query.offset;
-  res.send(key);
+  res.send(typeof key);
   //Add the Bing image API url here
   // router.get('/', function(req, res, next) {
   //   request({
