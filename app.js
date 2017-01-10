@@ -39,8 +39,8 @@ app.get('/search/:searchQuery', function(req, res) {
           "pageUrl": resultsArray.value[i].hostPageUrl
         });
       }
-      console.log(returnArray);
-      res.send(resultsArray);
+      //console.log(returnArray);
+      res.send(returnArray);
       });
   
 });
