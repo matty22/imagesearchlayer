@@ -24,6 +24,16 @@ app.get('/search/:searchQuery', function(req, res) {
     searchOffset = 0;
   }
 
+  // Create an array of recent searches
+  var recentSearchArray = [];
+  if (recentSearchArray.length < 10) {
+    recentSearchArray.push(searchQuery);
+  } else {
+    recentSearchArray.shift();
+    recentSearchArray.push(searchQuery);
+  }
+  console.log(recentSearchArray);
+
   // Call Bing Image Search API
   request.get({
     uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=' + searchQuery + '&offset=' + searchOffset,
@@ -39,7 +49,6 @@ app.get('/search/:searchQuery', function(req, res) {
           "pageUrl": resultsArray.value[i].hostPageUrl
         });
       }
-      //console.log(returnArray);
       res.send(returnArray);
       });
   
