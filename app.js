@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var request = require('request');
 var logger = require('morgan');
+var API_KEY = process.env.API_KEY;
 
 var index = require('./routes/index');
 
@@ -19,12 +20,13 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, response) {
   var searchQuery = req.params.searchQuery;
   var offset = req.query.offset;
+  console.log(typeof API_KEY);
   //Add the Bing image API url here
   router.get('/', function(req, res, next) {
     request({
       uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
       qs: {
-        api_key: '75cf99bff6b4406951be6a28a28c4c8',
+        api_key: API_KEY.toString(),
         query: searchQuery
       }
     }).pipe(res);
