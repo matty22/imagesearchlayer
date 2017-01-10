@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var request = require('request');
 var logger = require('morgan');
-//var key = process.env.API_KEY;
+var key = process.env.API_KEY;
 
 var index = require('./routes/index');
 
@@ -19,7 +19,7 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var searchOffset = req.query.offset;
-  var key = process.env.API_KEY;
+  //var key = process.env.API_KEY;
 
   //Add the Bing image API url here
   request({
