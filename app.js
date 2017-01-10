@@ -22,6 +22,7 @@ app.use('/', index);
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
   var searchOffset = req.query.offset;
+  var searchTime = Date.now();
   // Prevent searchOffset from being undefined
   if (searchOffset === undefined) {
     searchOffset = 0;
@@ -32,7 +33,7 @@ app.get('/search/:searchQuery', function(req, res) {
     recentSearchArray.push(searchQuery);
   } else {
     recentSearchArray.shift();
-    recentSearchArray.push(searchQuery);
+    recentSearchArray.push({ "term": searchQuery, "timestamp": searchTime });
   }
   console.log(recentSearchArray);
 
@@ -57,7 +58,7 @@ app.get('/search/:searchQuery', function(req, res) {
 });
 
 app.get('/latest', function(req, res) {
-  console.log(recentSearchArray);
+  res.send(recentSearchArray);
 });
 
 // catch 404 and forward to error handler
