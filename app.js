@@ -30,7 +30,7 @@ app.get('/search/:searchQuery', function(req, res) {
 
   // Add recent searches to recentSearchArray
   if (recentSearchArray.length < 10) {
-    recentSearchArray.push(searchQuery);
+    recentSearchArray.push({ "term": searchQuery, "timestamp": searchTime });
   } else {
     recentSearchArray.shift();
     recentSearchArray.push({ "term": searchQuery, "timestamp": searchTime });
