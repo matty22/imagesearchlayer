@@ -1,5 +1,4 @@
 var express = require('express');
-var router = express.Router();
 var path = require('path');
 var request = require('request');
 var logger = require('morgan');
@@ -22,16 +21,14 @@ app.get('/search/:searchQuery', function(req, res) {
   var searchOffset = req.query.offset;
 
   //Add the Bing image API url here
-  router.get('/', function(req, res, next) {
-    request({
-      uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
-      qs: {
-        query: searchQuery,
-        offset: searchOffset
-      },
-      headers: {"Ocp-Apim-Subscription-Key": key}
-    }).pipe(res);
-  });
+  request({
+    uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+    qs: {
+      query: searchQuery,
+      offset: searchOffset
+    },
+    headers: {"Ocp-Apim-Subscription-Key": key}
+  }).pipe(res);
   //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
 });
 
