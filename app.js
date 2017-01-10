@@ -19,16 +19,17 @@ app.use('/', index);
 
 app.get('/search/:searchQuery', function(req, res) {
   var searchQuery = req.params.searchQuery;
-  var offset = req.query.offset;
+  var searchOffset = req.query.offset;
 
   //Add the Bing image API url here
   router.get('/', function(req, res, next) {
     request({
       uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
       qs: {
-        api_key: key,
-        query: searchQuery
-      }
+        query: searchQuery,
+        offset: searchOffset
+      },
+      headers: {"Ocp-Apim-Subscription-Key": key}
     }).pipe(res);
   });
   //response.send("The search topic is " + searchQuery + " And the offset is " + offset);
