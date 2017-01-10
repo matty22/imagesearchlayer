@@ -27,10 +27,11 @@ app.get('/search/:searchQuery', function(req, res) {
   // Call Bing Image Search API
   request.get({
     uri: 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=' + searchQuery + '&offset=' + searchOffset,
+    method: "GET",
     headers: { "Ocp-Apim-Subscription-Key": key }
-  }, function(err, response, body) {
-    if (err) {
-      throw err;
+  }, function(error, response, body) {
+    if (error) {
+      throw error;
     } else {
       res.send(body);
     }
